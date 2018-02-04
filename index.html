@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>hello, friend</title>
+    <script src="script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: #1d1f21;
+            color: white;
+            margin: 0;
+            font-family: Consolas, 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.2rem;
+            text-transform: lowercase;
+            margin: 33vh auto;
+            cursor: default;
+        }
+
+        #container {
+            display: grid;
+            align-self: center;
+            justify-content: center;
+            justify-items: center;
+            justify-self: center;
+            grid-gap: 2rem;
+            height: auto;
+        }
+
+        h1 {
+            color: rgb(66, 66, 66);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2 {
+            font-size: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: #c5c8c6;
+        }
+
+        .separator {
+            line-height: 0.75rem;
+        }
+
+        .blinker {
+            animation-name: blinker;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+            animation-duration: 1s;
+            display: inline-block;
+            width: 1.3rem;
+            height: 1.5rem;
+            margin-left: 0.5rem;
+            box-shadow: 0 0 20px rgba(66, 66, 66, 0.2);
+            background: rgb(66, 66, 66);
+        }
+
+        @keyframes blinker {
+            from {
+                opacity: 1.0;
+            }
+            to {
+                opacity: 0.0;
+            }
+        }
+
+        a:hover {
+            color: white;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        div.column {
+            justify-self: center;
+            grid-area: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>hello, friend<span class="blinker"></span></h1>
+    <div id="container">
+        <div class="column">
+            <ul>
+                <li>
+                    <a href="https://example.com">example</a>
+                </li>
+                <li>
+                    <a href="https://example.com">example</a>
+                </li>
+                <li>
+                    <a href="https://example.com">example</a>
+                </li>
+            </ul>
+        </div>
+        <div class="column">
+            <ul>
+                <li>
+                    <a href="https://example.com">example</a>
+                </li>
+                <li>
+                    <a href="https://example.com">example</a>
+                </li>
+                <li>
+                    <a href="https://example.com">example</a>
+                </li>
+            </ul>
+        </div>
+        <div class="column">
+            <ul>
+                <li>
+                    <a href="https://example.com">example</a>
+                </li>
+                <li>
+                    <a href="https://example.com">example</a>
+                </li>
+                <li>
+                    <a href="https://example.com">example</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

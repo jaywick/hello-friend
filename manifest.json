@@ -1,0 +1,13 @@
+{
+  "name": "hello, friend",
+  "description": "Dark terminal-esque new tab page with first layer of bookmarks",
+  "permissions": [
+    "bookmarks"
+  ],
+  "version": "0.2",
+  "incognito": "split",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "manifest_version": 2
+}
