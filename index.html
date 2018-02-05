@@ -50,28 +50,6 @@
             line-height: 0.75rem;
         }
 
-        .blinker {
-            animation-name: blinker;
-            animation-iteration-count: infinite;
-            animation-timing-function: cubic-bezier(1, 0, 0, 1);
-            animation-duration: 1s;
-            display: inline-block;
-            width: 1.3rem;
-            height: 1.5rem;
-            margin-left: 0.5rem;
-            box-shadow: 0 0 20px rgba(66, 66, 66, 0.2);
-            background: rgb(66, 66, 66);
-        }
-
-        @keyframes blinker {
-            from {
-                opacity: 1.0;
-            }
-            to {
-                opacity: 0.0;
-            }
-        }
-
         a:hover {
             color: white;
             font-weight: bold;
@@ -91,7 +69,7 @@
 </head>
 
 <body>
-    <h1>hello, friend<span class="blinker"></span></h1>
+    <h1>hello, friend</h1>
     <div id="container">
         <div class="column">
             <ul>
