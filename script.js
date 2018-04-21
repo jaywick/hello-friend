@@ -1,7 +1,7 @@
 const folders = []
 
 chrome.bookmarks.getTree(items => {
-    const bookmarksBar = items[0].children.find(x => x.title === 'Bookmarks bar');
+    const bookmarksBar = items[0].children.find(x => /bookmarks bar/i.test(x.title));
     const rootFolder = { title: '/', children: [] };
 
     bookmarksBar.children.forEach(node => {
