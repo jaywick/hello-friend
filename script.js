@@ -1,7 +1,17 @@
 const options = {
     TITLE: 'hello, friend',
-    ROOT_FOLDER: /bookmarks bar/i,
-    COLOR_THEME: ['#cc6666', '#de935f', '#f0c674', '#8abeb7', '#81a2be', '#b294bb', '#a3685a'],
+    ROOT_FOLDER: /bookmarks (tool)?bar/i,
+    TITLE_COLOR: '#4d4f68',
+    BACKGROUND: '#282936',
+    COLOR_THEME: [
+        '#ea51b2',
+        '#00f769',
+        '#ebff87',
+        '#62d6e8',
+        '#b45bcf',
+        '#a1efe4',
+        '#e9e9f4',
+    ],
     MAX_NAME_LENGTH: 30,
 }
 
@@ -12,7 +22,7 @@ chrome.bookmarks.getTree(items => {
     const bookmarksBar = items[0].children.find(x => options.ROOT_FOLDER.test(x.title));
 
     if (!bookmarksBar) {
-        console.error(`Was expecting a folder called 'bookmarks bar'`);
+        console.error(`Was expecting a folder called '${options.ROOT_FOLDER}'`);
     }
 
     const rootFolder = { title: '/', children: [] };
@@ -49,7 +59,7 @@ chrome.bookmarks.getTree(items => {
 function render(folders) {
     const colors = options.COLOR_THEME;
     const root = document.getElementById('container');
-    
+
     let colourIndex = 0;
 
     root.innerHTML = folders.map(folder => {
@@ -76,3 +86,8 @@ function trunc(text) {
 
     return text.substr(0, options.MAX_NAME_LENGTH) + '...'
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.style.background = options.BACKGROUND;
+    document.getElementById('welcome').style.color = options.TITLE_COLOR;
+});
