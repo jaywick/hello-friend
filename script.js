@@ -1,22 +1,7 @@
-const options = {
-    TITLE: 'hello, friend',
-    ROOT_FOLDER: /bookmarks (tool)?bar/i,
-    TITLE_COLOR: '#4d4f68',
-    BACKGROUND: '#282936',
-    COLOR_THEME: [
-        '#ea51b2',
-        '#00f769',
-        '#ebff87',
-        '#62d6e8',
-        '#b45bcf',
-        '#a1efe4',
-        '#e9e9f4',
-    ],
-    MAX_NAME_LENGTH: 30,
-}
+import { options } from './options.js';
+import { render } from './render.js';
 
-const folders = [];
-const errors = [];
+const columns = [];
 
 chrome.bookmarks.getTree(items => {
     const bookmarksBar = items[0].children.find(x => options.ROOT_FOLDER.test(x.title));
@@ -25,67 +10,58 @@ chrome.bookmarks.getTree(items => {
         console.error(`Was expecting a folder called '${options.ROOT_FOLDER}'`);
     }
 
-    const rootFolder = { title: '/', children: [] };
+    const rootBookmarks = bookmarksBar.children
+        .filter(node => !node.children);
 
-    bookmarksBar.children.forEach(node => {
-        const folder = { children: [] };
+    const rootFolders = bookmarksBar.children
+        .filter(node => !!node.children);
 
-        if (node.children && node.children.length) {
-            folder.title = node.title;
+    const rootColumn = {
+        title: '/',
+        children: [],
+    };
 
-            node.children.forEach(child => {
-                if (!child.url.startsWith('javascript:')) {
-                    folder.children.push({ title: child.title, url: child.url });
-                }
-            });
-        } else { // if not a folder, it's a shortcut
-            if (!node.url.startsWith('javascript:')) {
-                rootFolder.children.push({ title: node.title, url: node.url });
-            }
-        }
+    rootBookmarks
+        .forEach(node => addBookmark(rootColumn, node));
 
-        if (folder.children.length) {
-            folders.push(folder);
-        }
-    });
+    columns.push(rootColumn);
 
-    if (rootFolder.children.length) {
-        folders.unshift(rootFolder);
-    }
+    rootFolders
+        .forEach(node => {
+            const column = {
+                title: node.title,
+                children: [],
+            };
 
-    render(folders);
+            visit(column, node);
+
+            columns.push(column);
+        });
+
+    render(columns);
 });
 
-function render(folders) {
-    const colors = options.COLOR_THEME;
-    const root = document.getElementById('container');
-
-    let colourIndex = 0;
-
-    root.innerHTML = folders.map(folder => {
-        const listItems = folder.children.map(item => {
-            if (item.title === '-') {
-                return '<li class="separator">&nbsp;<li>';
-            }
-
-            const title = trunc(item.title);
-            return `<li><a href="${item.url}" title="${title.endsWith('...') ? item.title : ''}">${title}</a></li>`;
-        }).join('');
-
-        colourIndex = (colourIndex >= colors.length - 1) ? 0 : (colourIndex + 1);
-        return `<div class="column"><h2 class="folder-name" style="color: ${colors[colourIndex]}">${folder.title}</h1><ul>${listItems}</ul></div>`;
-    }).join('');
-
-    document.getElementById('welcome').innerHTML = options.TITLE;
-}
-
-function trunc(text) {
-    if (text.length <= (options.MAX_NAME_LENGTH - 2)) {
-        return text;
+const visit = (column, node, path = []) => {
+    if (node.children) {
+        node.children.forEach(x => visit(column, x, [...path, node.title]));
+        return;
     }
 
-    return text.substr(0, options.MAX_NAME_LENGTH) + '...'
-}
+    addBookmark(column, node, path);
+};
+
+const addBookmark = (column, node, path = []) => {
+    if (!node.url || node.url.startsWith('javascript:')) {
+        // ignore bookmarklets
+        return;
+    }
+
+    column.children.push({
+        title: node.title,
+        url: node.url,
+        path: path,
+    });
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     document.body.style.background = options.BACKGROUND;
