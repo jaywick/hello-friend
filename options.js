@@ -14,5 +14,3 @@ const options = {
     ],
     MAX_NAME_LENGTH: 30,
 };
-
-export { options };

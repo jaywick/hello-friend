@@ -1,6 +1,3 @@
-import { options } from './options.js';
-import { render } from './render.js';
-
 const columns = [];
 
 chrome.bookmarks.getTree(items => {

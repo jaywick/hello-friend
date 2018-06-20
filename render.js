@@ -1,5 +1,3 @@
-import { options } from './options.js'
-
 const render = columns => {
     const colors = options.COLOR_THEME;
     const root = document.getElementById('container');
@@ -43,5 +41,3 @@ const render = columns => {
 
     document.getElementById('welcome').innerHTML = options.TITLE;
 };
-
-export { render };
