@@ -1,10 +1,10 @@
 {
   "name": "hello, friend",
-  "description": "Dark terminal-esque new tab page with first layer of bookmarks",
+  "description": "Dark terminal-esque new tab page with your bookmarks",
   "permissions": [
     "bookmarks"
   ],
-  "version": "0.2",
+  "version": "0.6",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
