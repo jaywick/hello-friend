@@ -14,8 +14,7 @@ const render = columns => {
                         .concat(bookmark.title) // add bookmark name
                         .join('/'); // join as path
 
-                    if (bookmark.title === '-') {
-                        // force hyphen
+                    if (bookmark.isSeparator) {
                         return '<li class="separator">&nbsp;</li>';
                     }
 
