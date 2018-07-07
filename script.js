@@ -67,3 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.background = options.BACKGROUND;
     document.getElementById('welcome').style.color = options.TITLE_COLOR;
 });
+
+// notify firefox users to set their home page
+if (window.browser) {
+    window.browser.runtime.getBrowserInfo()
+        .then(browser => {
+            if (browser.name === 'Firefox') {
+                console.log(`Hello, friend. On ${browser.name} you can make this your home page by setting the following URL in your home page preferences:`);
+                console.log(window.location.href)
+            }
+        });
+}
