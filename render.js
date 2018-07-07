@@ -21,21 +21,21 @@ const render = columns => {
 
                     return (
                         `<li>
-                    <a href="${bookmark.url}" title="${title.endsWith('...') ? bookmark.title : ''}">
-                        ${title}
-                    </a>
-                </li>`
+                            <a href="${bookmark.url}" title="${title.endsWith('...') ? bookmark.title : ''}">
+                                ${title}
+                            </a>
+                        </li>`
                     );
                 }).join('');
 
             colourIndex = (colourIndex >= colors.length - 1) ? 0 : (colourIndex + 1);
             return (
                 `<div class="column">
-                <h2 class="folder-name" style="color: ${colors[colourIndex]}">
-                    ${column.title}
-                </h1>
-                <ul>${listItems}</ul>
-            </div>`
+                    <h2 class="folder-name" style="color: ${colors[colourIndex]}">
+                        ${column.title}
+                    </h1>
+                    <ul>${listItems}</ul>
+                </div>`
             );
         }).join('');
 
