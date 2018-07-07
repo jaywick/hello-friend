@@ -4,7 +4,7 @@
   "permissions": [
     "bookmarks"
   ],
-  "version": "0.6",
+  "version": "0.7",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
