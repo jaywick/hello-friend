@@ -3,6 +3,7 @@ const options = {
     ROOT_FOLDER: /bookmarks (tool)?bar/i,
     TITLE_COLOR: '#4d4f68',
     BACKGROUND: '#282936',
+    SEPARATORS: [ '-', '' ],
     COLOR_THEME: [
         '#ea51b2',
         '#00f769',

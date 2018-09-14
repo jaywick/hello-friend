@@ -53,8 +53,8 @@ const addBookmark = (column, node, path = []) => {
         return;
     }
 
-    const isSeparator = node.title === '-' || node.type === 'separator';
-
+    const isSeparator = options.SEPARATORS.includes(node.title) || node.type === 'separator';
+    
     column.children.push({
         title: node.title,
         url: node.url,
