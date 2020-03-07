@@ -1,6 +1,6 @@
 const options = {
     TITLE: 'hello, friend',
-    ROOT_FOLDER: /bookmarks (tool)?bar/i,
+    ROOT_FOLDER: /(bookmarks (tool)?bar|favou?rites bar)/i,
     TITLE_COLOR: '#4d4f68',
     BACKGROUND: '#282936',
     SEPARATORS: [ '-', '' ],
