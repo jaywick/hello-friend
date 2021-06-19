@@ -1,82 +1,79 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>hello, friend</title>
+        <script src="options.js"></script>
+        <script src="utils.js"></script>
+        <script src="render.js"></script>
+        <script src="script.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>
+            body {
+                background-color: black;
+                color: white;
+                margin: 0;
+                font-family: monospace;
+                font-size: 14px;
+                line-height: 1.2rem;
+                text-transform: lowercase;
+                margin: 33vh auto;
+                cursor: default;
+                overflow: hidden;
+                transition: 0.2s background-color;
+            }
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>hello, friend</title>
-    <script src="options.js"></script>
-    <script src="utils.js"></script>
-    <script src="render.js"></script>
-    <script src="script.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            margin: 0;
-            font-family: monospace;
-            font-size: 14px;
-            line-height: 1.2rem;
-            text-transform: lowercase;
-            margin: 33vh auto;
-            cursor: default;
-            overflow: hidden;
-            transition: 0.2s background-color;
-        }
+            #container {
+                display: grid;
+                align-self: center;
+                justify-content: center;
+                justify-items: center;
+                justify-self: center;
+                grid-gap: 2rem;
+                height: auto;
+            }
 
-        #container {
-            display: grid;
-            align-self: center;
-            justify-content: center;
-            justify-items: center;
-            justify-self: center;
-            grid-gap: 2rem;
-            height: auto;
-        }
+            h1 {
+                color: rgb(66, 66, 66);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
 
-        h1 {
-            color: rgb(66, 66, 66);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+            h2 {
+                font-size: 1rem;
+            }
 
-        h2 {
-            font-size: 1rem;
-        }
+            a {
+                text-decoration: none;
+                color: #c5c8c6;
+            }
 
-        a {
-            text-decoration: none;
-            color: #c5c8c6;
-        }
+            .separator {
+                line-height: 0.75rem;
+            }
 
-        .separator {
-            line-height: 0.75rem;
-        }
+            a:hover {
+                color: white;
+                font-weight: bold;
+            }
 
-        a:hover {
-            color: white;
-            font-weight: bold;
-        }
+            ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
 
-        ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
+            div.column {
+                justify-self: center;
+                grid-area: 1;
+            }
+        </style>
+    </head>
 
-        div.column {
-            justify-self: center;
-            grid-area: 1;
-        }
-    </style>
-</head>
-
-<body>
-    <h1 id="welcome"></h1>
-    <div id="container">
-    </div>
-</body>
-
+    <body>
+        <h1 id="welcome"></h1>
+        <div id="container"></div>
+    </body>
 </html>
