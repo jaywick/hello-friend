@@ -3,5 +3,5 @@ const trunc = text => {
         return text;
     }
 
-    return text.substr(0, options.MAX_NAME_LENGTH) + '...'
+    return text.substring(0, options.MAX_NAME_LENGTH) + '…'
 }

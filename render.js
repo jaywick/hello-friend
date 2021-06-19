@@ -9,10 +9,10 @@ const render = columns => {
         .map(column => {
             const listItems = column
                 .children.map(bookmark => {
-                    const title = bookmark.path
+                    const title = trunc(bookmark.path
                         .slice(1) // skip column name
                         .concat(bookmark.title) // add bookmark name
-                        .join('/'); // join as path
+                        .join('/')); // join as path
 
                     if (bookmark.isSeparator) {
                         return '<li class="separator">&nbsp;</li>';
@@ -20,7 +20,7 @@ const render = columns => {
 
                     return (
                         `<li>
-                            <a href="${bookmark.url}" title="${title.endsWith('...') ? bookmark.title : ''}">
+                            <a href="${bookmark.url}" ${title.endsWith('…') ? `title="${bookmark.title}"` : ''}>
                                 ${title}
                             </a>
                         </li>`
